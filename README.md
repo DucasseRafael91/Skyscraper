@@ -1,78 +1,72 @@
-🛳️ Bataille Navale
+Gratte-Ciel (Skyscrapers)
 
-Un petit jeu de Bataille Navale en mode texte, programmé en Python. Le joueur joue contre une grille fixe dans laquelle les navires sont pré-positionnés. Le but est de trouver et couler tous les navires en tirant sur les bonnes coordonnées.
+Gratte-Ciel est un jeu de logique inspiré du puzzle "Skyscrapers" présenté régulièrement aux Championnats du monde de jeux de logique. Ce projet Python propose un générateur, un affichage et un solveur automatique de grilles de jeu de 4×4 à 8×8.
 
-🎯 Objectif du Jeu
+🔍 Présentation
 
-Le joueur entre des coordonnées de tir (par exemple : B2, E5, etc.).
+Le jeu du gratte-ciel se joue sur une grille carrée où chaque case contient un immeuble de hauteur unique par ligne et colonne. Les indices placés autour de la grille indiquent combien d’immeubles sont visibles depuis ce point de vue, en tenant compte du fait que les immeubles plus hauts cachent les plus petits derrière eux.
 
-Le programme indique si le tir est :
+Ce projet propose :
 
-Touché
+🧱 La génération d'une grille solution valide
 
-Coulé (si toutes les cases du navire sont atteintes)
+👁️ Le calcul des indices visibles (création de la grille problème)
 
-À l’eau (manqué)
+🧠 Un solveur automatique basé sur des stratégies humaines
 
-Une grille est affichée à chaque tir, indiquant :
+🎛️ Une interface console interactive
 
-X pour une case touchée
+🚀 Fonctionnalités
 
-~ pour un tir raté
+✅ Génération aléatoire d'une grille solution de taille 4×4 à 8×8
 
-🧱 Grille de Départ
+✅ Calcul automatique des indices extérieurs pour générer une grille problème
 
-Grille de taille 10x10, colonnes de A à J, lignes de 1 à 10.
+✅ Résolution automatique de la grille problème sans force brute : le solveur applique des techniques de déduction similaires à celles utilisées par les joueurs humains
 
-| Nom du navire     | Taille | Position             |
-| ----------------- | ------ | -------------------- |
-| Porte-avion       | 5      | B2 → F2 (horizontal) |
-| Croiseur          | 3      | A4 → A6 (vertical)   |
-| Contre-torpilleur | 2      | C5 → C7 (vertical)   |
-| Sous-marin        | 3      | H5 → J5 (horizontal) |
-| Torpilleur        | 2      | E9 → F9 (horizontal) |
+✅ Affichage clair de la grille dans le terminal
 
-🕹️ Fonctionnement du Jeu
+🧠 Stratégie de résolution
 
-Le programme affiche une grille vide.
+Le solveur repose sur une suite de règles inspirées de la logique humaine :
 
-Il demande une coordonnée de tir (ex : C5, H1, etc.).
+Remplissage direct : si un indice est égal à la taille de la grille, la ligne/colonne est forcément en ordre croissant.
 
-Il indique si le tir :
+Blocages croisés : en croisant les contraintes des lignes et des colonnes, on élimine les possibilités impossibles.
 
-Touche un navire
+Propagation logique : les placements certains permettent d'en déduire d'autres par élimination.
 
-Coule un navire
+Backtracking minimal : utilisé uniquement en dernier recours quand plusieurs configurations restent possibles.
 
-Rate
+L’approche est systématique et permet de résoudre des grilles de difficulté moyenne à élevée sans recherche exhaustive.
 
-Le jeu continue jusqu’à ce que tous les navires soient coulés.
+🎮 Utilisation
 
-La grille se met à jour après chaque tir.
+Au lancement, vous serez invité à entrer la taille de la grille (entre 4 et 8). Le programme générera alors :
+
+une grille solution (en interne),
+
+les indices visibles depuis chaque bord,
+
+et vous proposera de résoudre automatiquement la grille ou de tenter vous-même.
 
 
-Pré-requis
+📚 Technologies utilisées
 
 Python 3.13
 
-Lancer le script : python battleship.py
+Aucune dépendance externe 
 
-🧠 À savoir
+✅ Avancement
 
-Le placement des navires est fixe (non aléatoire).
+ Générateur de grille solution
 
-Le joueur tire à l’infini jusqu’à couler tous les navires.
+ Générateur d’indices visibles
 
-Le programme valide les coordonnées pour éviter les erreurs.
+ Affichage console
 
-Affichage visuel clair pour bien distinguer les tirs.
+ Solveur automatique logique
 
-✅ Légende des symboles
-Symbole	Signification
-X	Tir ayant touché un navire
-~	Tir raté (à l’eau)
-.	Case non encore découverte
+ Interface interactive simple
 
-🚀 Améliorations possibles
-
-Ajouter des navires placés aléatoirement
+ Interface graphique (prévue dans une prochaine version)
