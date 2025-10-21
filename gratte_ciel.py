@@ -66,7 +66,7 @@ def hide_game_zone(grid, symbol):
         for j in range(1, len(grid) - 1):
             grid[i][j] = symbol
 
-def main():
+def maine():
     while True:
         user_input = input("Entrez la taille de la grille (4 à 8) : ")
         if user_input.isdigit():
